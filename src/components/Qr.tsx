@@ -15,7 +15,7 @@ export const Qr = () => {
         <div style={styles.container}>
           <QRCodeSVG
           // bgColor"
-            value="http://localhost:5173/Upload"
+            value="https://demo-ui-ocr.vercel.app/Upload"
             size={250} // Adjust size as needed
           />
         </div>
