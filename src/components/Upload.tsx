@@ -76,7 +76,7 @@ const Upload: React.FC = () => {
               <ul style={styles.resultList}>
                 {Object.entries(ocrResult.extracted_data).map(([key, value]) => (
                   <li key={key} style={styles.resultItem}>
-                    <strong>{key}: </strong> {value || ""}
+                    <strong>{key}: </strong> {value ? value : ""}
                   </li>
                 ))}
               </ul>
