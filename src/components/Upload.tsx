@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import axiosInstance from "./Axios";
 import { Box } from "@mui/material";
 
+type OCRResult = {
+  extracted_data: Record<string, string>; // Key-value pairs
+  json_file_name: string; // Name of the JSON file
+  message: string; // Response message
+} | null;
+
 const Upload: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
-  const [ocrResult, setOcrResult] = useState<any>(null); // For holding the OCR result
+  const [ocrResult, setOcrResult] = useState<OCRResult>(null); // Updated state with proper typing
   const [isLoading, setIsLoading] = useState(false); // To handle loading state
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,7 +82,7 @@ const Upload: React.FC = () => {
               <ul style={styles.resultList}>
                 {Object.entries(ocrResult.extracted_data).map(([key, value]) => (
                   <li key={key} style={styles.resultItem}>
-                    <strong>{key}: </strong> {value ? value : ""}
+                    <strong>{key}: </strong> {value ? value : "N/A"}
                   </li>
                 ))}
               </ul>
@@ -92,6 +98,7 @@ const Upload: React.FC = () => {
     </Box>
   );
 };
+
 
 const styles = {
   container: {
